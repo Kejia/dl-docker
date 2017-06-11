@@ -1,3 +1,4 @@
+
 FROM ubuntu
 
 MAINTAINER Sai Soundararaj <saip@outlook.com>
@@ -26,7 +27,7 @@ RUN apt-get update && apt-get install -y \
 		liblcms2-dev \
 		libopenblas-dev \
 		liblapack-dev \
-		libopenjpeg2 \
+		libopenjpeg5 \
 		libpng12-dev \
 		libssl-dev \
 		libtiff5-dev \
@@ -84,7 +85,8 @@ RUN apt-get update && apt-get install -y \
 # Install pip
 RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
 	python get-pip.py && \
-	rm get-pip.py
+	rm get-pip.py && \
+	pip install --upgrade pip
 
 # Add SNI support to Python
 RUN pip --no-cache-dir install \
